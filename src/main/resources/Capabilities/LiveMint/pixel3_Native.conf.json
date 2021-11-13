@@ -1,0 +1,20 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "username": "browserstack user name",
+  "access_key": "browserstack access_key here",
+
+  "capabilities": {
+    "project": "LM Android Native SSO",
+    "build": "LM Test Android Native",
+    "name": "Android Native Test",
+    "browserstack.debug": true,
+    "app": "bs://ae0e8495fe906631758d6a1d0c87db9c6b147148"
+  },
+
+  "environments": [
+    {
+      "device": "Google Pixel 3",
+      "os_version": "9.0"
+    }
+  ]
+}

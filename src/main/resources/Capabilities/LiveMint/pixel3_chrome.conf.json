@@ -1,0 +1,20 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "username": "browserstack user name",
+  "access_key": "browserstack access_key here",
+
+  "capabilities": {
+    "project": "LM Android Web SSO",
+    "build": "LM Test android",
+    "name": "LM Test Automation",
+    "browserstack.debug": true,
+    "browser": "Chrome"
+  },
+
+  "environments": [
+    { 
+      "device": "Google Pixel 3",
+      "os_version": "9.0"
+    }
+  ]
+}

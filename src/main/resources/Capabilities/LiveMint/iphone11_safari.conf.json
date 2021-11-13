@@ -1,0 +1,20 @@
+  {
+  "server": "hub-cloud.browserstack.com",
+  "username": "browserstack user name",
+  "access_key": "browserstack access_key here",
+
+  "capabilities": {
+    "project": "LM IOS Web SSO",
+    "build": "LM Test IOS",
+    "name": "IOS Web SSO",
+    "browserstack.debug": true,
+    "browser": "Safari"
+  },
+
+  "environments": [
+    { 
+      "device": "iPhone 11",
+      "os_version": "14"
+    }
+  ]
+}

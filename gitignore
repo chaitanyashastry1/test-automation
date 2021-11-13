@@ -1,0 +1,5 @@
+*.png
+*.html
+/src/main/resources/screenshots/
+src/main/resources/screenshots/
+ExtentReports/

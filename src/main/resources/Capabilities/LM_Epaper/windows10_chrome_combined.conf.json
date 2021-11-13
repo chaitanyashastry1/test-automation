@@ -1,0 +1,25 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "username": "browserstack user name",
+  "access_key": "browserstack access_key here",
+
+  "capabilities": {
+    "project": "LM Epaper",
+    "build": "LM Build",
+    "name": "LM Desktop Web Test",
+    "browserstack.debug": false,
+    "browser": "Chrome",
+    "os_version": "10",
+    "resolution": "1920x1080",
+    "browser_version": "88.0",
+    "os": "Windows",
+    "browserstack.video": true,
+    "browserstack.seleniumLogs": false
+  },
+  "environments": [
+    {
+      "device": "Windows 10",
+      "os_version": "10"
+    }
+  ]
+}

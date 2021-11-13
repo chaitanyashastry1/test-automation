@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="LiveMintTestSuite">
+    <listeners>
+        <listener class-name="com.listeners.AlterSuitListener"></listener>
+        <listener class-name="com.listeners.TestListener"/>
+        <listener class-name="com.listeners.AnnotationTransformer"></listener>
+    </listeners>
+
+    <parameter name="environment" value="prod"></parameter>
+    <parameter name="projectName" value="LiveMint"></parameter>
+    <parameter name="executionType" value="sanity"></parameter>
+    <parameter name="platformName" value="desktop_web"></parameter>
+    <parameter name="browser" value="chrome"></parameter>
+    <parameter name="browserMode" value="normal"></parameter>
+    <parameter name="isBrowserStack" value="false"></parameter>
+    <parameter name="capabilitiesJson" value="pixel3_chrome_ataur"></parameter>
+    <parameter name="buildNumber" value="666"></parameter>
+
+    <test name="LiveMintLoginTest" group-by-instances="true">
+        <classes>
+            <class name="LiveMint.LoginTest"></class>
+        </classes>
+    </test>
+</suite>
