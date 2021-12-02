@@ -70,7 +70,7 @@ public class GoogleSheetUtils {
      * Prints the names and majors of students in a sample spreadsheet:
      * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
      */
-    public static void main(String... args) throws IOException, GeneralSecurityException {
+/*    public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
         final String spreadsheetId = "1kthjqhoCYKxGHudCs3CWiOAeh83Haq14_35VVFMsDto";
@@ -91,13 +91,12 @@ public class GoogleSheetUtils {
                 System.out.printf("%s, %s\n", row.get(0), row.get(4));
             }
         }
-    }
+    }*/
 
     /**
      * @param: none
      * @return: void
      * @description: This function sets up the entire test data from the google sheet.
-     * @author: Ataur
      */
     public void setupDataSheet() throws IOException, GeneralSecurityException {
         GlobalVars globalVars=GlobalVars.getInstance();
@@ -199,7 +198,6 @@ public class GoogleSheetUtils {
      * @param valuesTestData<List<Object>> valuesTestConfig takes the Sheet object returned from the workbook
      * @return: Map<String, DataElements>
      * @description return the map of page elements with element name and object of pageElement for the same.
-     * @author: Ataur
      */
     private Map<String, Map<String, String>> getTestData(List<List<Object>> valuesTestData) {
         Map<String, Map<String, String>> dataElementsMap = new LinkedHashMap<>();
@@ -239,7 +237,6 @@ public class GoogleSheetUtils {
      * @param: String
      * @return: true/false
      * @description: This function takes a String with value yes or no and returns the corresponding boolean value
-     * @author: Ataur
      */
     public static boolean parseStringToBoolean(String value){
         boolean boolResult=false;
