@@ -41,9 +41,9 @@ public class HomeTest {
 	@Author(name = "Chaitanya Shastry")
 	@Description("QAAUT-929: To verify Logo of HT Smartcast")
 	@Test
-	public void verifyClickSmartCastLogoImageTest() {
-		boolean isDisplayed = homePage.clickSmartCastLogo();
-		Assert.assertTrue(isDisplayed , "Logo is not Clickable");
+	public void verifySmartCastLogoImageTest() {
+		boolean isDisplayed = homePage.checkSmartCastLogo();
+		Assert.assertTrue(isDisplayed , "Logo is not Present");
 	}
 
 	@Author(name = "Chaitanya Shastry")

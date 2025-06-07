@@ -14,7 +14,7 @@
     <parameter name="browser" value="chrome"></parameter>
     <parameter name="browserMode" value="normal"></parameter>
     <parameter name="isBrowserStack" value="false"></parameter>
-    <parameter name="capabilitiesJson" value="pixel3_chrome_ataur"></parameter>
+    <parameter name="capabilitiesJson" value="pixel3_chrome"></parameter>
     <parameter name="buildNumber" value="666"></parameter>
 
     <test name="LiveMintLoginTest" group-by-instances="true">

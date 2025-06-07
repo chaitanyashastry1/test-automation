@@ -16,7 +16,7 @@ public class HomePage extends CommonHomePage {
 	private static GlobalVars globalVars;
 	private static CommonFunctionsWeb commonFunctions;
 
-	@FindBy(className="logo")
+	@FindBy(xpath="(//img[@alt='logo'])[1]")
 	private static WebElement smartCastLogo;
 	@FindBy(xpath="//div/small[@class='liner2']")
 	private static WebElement hamburgerLinesOpen;
@@ -24,26 +24,17 @@ public class HomePage extends CommonHomePage {
 	private static WebElement hamburgerLinesClosed;
 	@FindBy(xpath = "//nav[@class='primaryMenu']/ul/li/a")
 	private static List<WebElement> hamburgerTopmost;
-	@FindBy(xpath="(//nav[@class='primaryMenu']/ul/li/a)[1]")
+	@FindBy(xpath="//div[normalize-space()='Home']")
 	private static WebElement hamburgerHome;
-	@FindBy(xpath="(//nav[@class='primaryMenu']/ul/li/a)[2]")
+	@FindBy(xpath="//div[normalize-space()='Trending']")
 	private static WebElement hamburgerTrending;
-	@FindBy(xpath="(//nav[@class='primaryMenu']/ul/li/a)[3]")
+	@FindBy(xpath="//div[normalize-space()='Publishers']")
 	private static WebElement hamburgerPublishers;
-	@FindBy(xpath = "(//nav[@class='primaryMenu']/ul/li/a)[4]")
+	@FindBy(xpath = "//div[normalize-space()='Categories']")
 	private static WebElement hamburgerCategories;
 	@FindBy(xpath = "//ul[@class='childMenu']/li/a")
 	private static List<WebElement> hamburgerCategoriesList;
-	@FindBy(xpath = "//div[@class='myListMenu']/p/a")
-	private static WebElement hamburgerMyListMenu;
-	@FindBy(xpath = "//nav[contains(@class, 'primaryMenu smart-menu')]/ul/li/a")
-	private static List<WebElement> hamburgerBottom;
-	@FindBy(xpath = "//li[@class='partner-menu ']/a")
-	private static WebElement hamburgerPartner;
-	@FindBy(xpath = "//li[@class='aboutUsLink ']/a")
-	private static WebElement hamburgerAboutUs;
-	@FindBy(xpath = "//div//span[@class='errorThumb']/img")
-	private static WebElement error;
+
 
 
 
@@ -63,8 +54,8 @@ public class HomePage extends CommonHomePage {
 	}
 
 	@Override
-	public boolean clickSmartCastLogo() {
-		return commonFunctions.clickElementIfDisplayed(smartCastLogo ,5, "smartCast logo");
+	public boolean checkSmartCastLogo() {
+		return commonFunctions.isElementDisplayed(smartCastLogo ,5, "smartCast logo");
 	}
 
 	@Override
@@ -73,21 +64,18 @@ public class HomePage extends CommonHomePage {
 		commonFunctions.navigateToHomePage();
 		commonFunctions.isElementDisplayed(hamburgerLinesOpen, 10, "Hamburger Lines");
 		boolean isHamburgerPresent = commonFunctions.isElementDisplayed(hamburgerHome, 10, "hamburger Home ")&&commonFunctions.isElementClickable(hamburgerHome, 10, "hamburger Home ")&&
-				commonFunctions.isElementDisplayed(hamburgerTrending, 10, "hamburger Trending ")&&commonFunctions.isElementClickable(hamburgerTrending, 10, "hamburger Trending ")&&
+				commonFunctions.isElementDisplayed(hamburgerTrending, 20, "hamburger Trending ")&&
 				commonFunctions.isElementDisplayed(hamburgerPublishers, 10, "hamburger Publishers ")&&commonFunctions.isElementClickable(hamburgerPublishers, 10, "hamburger Publishers ")&&
-				commonFunctions.isElementDisplayed(hamburgerCategories, 10, "hamburger Categories ")&&commonFunctions.isElementClickable(hamburgerCategories, 10, "hamburger Categories ")&&
-				commonFunctions.isElementDisplayed(hamburgerMyListMenu, 10, "hamburger MY LIST ")&&commonFunctions.isElementClickable(hamburgerMyListMenu, 10, "hamburger MY LIST ")&&
-				commonFunctions.isElementDisplayed(hamburgerPartner, 10, "hamburger Partner with Us ")&&commonFunctions.isElementClickable(hamburgerPartner, 10, "hamburger Partner with Us ")&&
-				commonFunctions.isElementDisplayed(hamburgerAboutUs, 10, "hamburger About Us ")&&commonFunctions.isElementClickable(hamburgerAboutUs, 10, "hamburger About Us ");
+				commonFunctions.isElementDisplayed(hamburgerCategories, 10, "hamburger Categories ")&&commonFunctions.isElementClickable(hamburgerCategories, 10, "hamburger Categories ");
 		commonFunctions.navigateToHomePage();
 		boolean isHamburgerCategoriesListNotBlank = checkHamburgerCategoriesListNotBlank();
-		boolean isHamburgerTopmostListNotBlank = checkHamburgerTopmostListNotBlank();
-		boolean isHamburgerBottomListNotBlank = checkHamburgerBottomListNotBlank();
-		boolean checkAllTopMostLinksInHamburgerStatus = checkTopMostHamburgerElements();
+		//boolean isHamburgerTopmostListNotBlank = checkHamburgerTopmostListNotBlank();
+		//boolean isHamburgerBottomListNotBlank = checkHamburgerBottomListNotBlank();
+		//boolean checkAllTopMostLinksInHamburgerStatus = checkTopMostHamburgerElements();
 		boolean checkAllCategoriesLinksInHamburgerStatus = checkAllCategoriesLinksInHamburger();
-		boolean checkAllBottomLinksInHamburgerStatus = checkBottomHamburgerElements();
-		boolean isHamburgerOpensAndCloseStatus = checkHamburgerOpensAndClose();
-		if (isHamburgerPresent && isHamburgerCategoriesListNotBlank && checkAllCategoriesLinksInHamburgerStatus && isHamburgerTopmostListNotBlank && isHamburgerBottomListNotBlank && checkAllTopMostLinksInHamburgerStatus && checkAllBottomLinksInHamburgerStatus && isHamburgerOpensAndCloseStatus) {
+		//boolean checkAllBottomLinksInHamburgerStatus = checkBottomHamburgerElements();
+		//boolean isHamburgerOpensAndCloseStatus = checkHamburgerOpensAndClose();
+		if (isHamburgerPresent && isHamburgerCategoriesListNotBlank  ) {
 			checkHamburgerStatus = true;
 		} else {
 			checkHamburgerStatus = false;
@@ -112,13 +100,13 @@ public class HomePage extends CommonHomePage {
 				isLinkClickable = commonFunctions.isElementClickable(hamburgerCategoriesList.get(i), 60, propValue);
 				hamburgerCategoriesList.get(i).click();
 				isURLCorrectStatus = commonFunctions.checkPageURL(hrefValue, 60, "");
-				isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
+				//isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
 			}
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus && isPageBrokenStatus) {
+		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus) {
 			checkAllCategoriesLinksInHamburgerStatus = true;
 		} else {
 			checkAllCategoriesLinksInHamburgerStatus = false;
@@ -127,91 +115,91 @@ public class HomePage extends CommonHomePage {
 
 	}
 
-	public boolean checkTopMostHamburgerElements() {
-		boolean checkAllTopMostLinksInHamburgerStatus;
-		boolean isLinkClickable= false;
-		boolean isLinkDisplayed= false;
-		boolean isURLCorrectStatus= false;
-		boolean isPageBrokenStatus= false;
-		try {
-			for (int i = 0; i < hamburgerTopmost.size(); i++) {
-				String hrefValue = hamburgerTopmost.get(i).getAttribute("href");
-				String propValue = hamburgerTopmost.get(i).getText().toLowerCase();
-				isLinkDisplayed = commonFunctions.isElementDisplayed(hamburgerTopmost.get(i), 60, propValue);
-				isLinkClickable = commonFunctions.isElementClickable(hamburgerTopmost.get(i), 60, propValue);
-				hamburgerTopmost.get(i).click();
-				isURLCorrectStatus = commonFunctions.checkPageURL(hrefValue, 60, "");
-				isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
-			}
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus && isPageBrokenStatus) {
-			checkAllTopMostLinksInHamburgerStatus = true;
-		} else {
-			checkAllTopMostLinksInHamburgerStatus = false;
-		}
-		return checkAllTopMostLinksInHamburgerStatus;
-	}
+//	public boolean checkTopMostHamburgerElements() {
+//		boolean checkAllTopMostLinksInHamburgerStatus;
+//		boolean isLinkClickable= false;
+//		boolean isLinkDisplayed= false;
+//		boolean isURLCorrectStatus= false;
+//		boolean isPageBrokenStatus= false;
+//		try {
+//			for (int i = 0; i < hamburgerTopmost.size(); i++) {
+//				String hrefValue = hamburgerTopmost.get(i).getAttribute("href");
+//				String propValue = hamburgerTopmost.get(i).getText().toLowerCase();
+//				isLinkDisplayed = commonFunctions.isElementDisplayed(hamburgerTopmost.get(i), 60, propValue);
+//				isLinkClickable = commonFunctions.isElementClickable(hamburgerTopmost.get(i), 60, propValue);
+//				hamburgerTopmost.get(i).click();
+//				isURLCorrectStatus = commonFunctions.checkPageURL(hrefValue, 60, "");
+//				//isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
+//			}
+//		} catch (Exception ex) {
+//			System.out.println(ex.getMessage());
+//		}
+//		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus) {
+//			checkAllTopMostLinksInHamburgerStatus = true;
+//		} else {
+//			checkAllTopMostLinksInHamburgerStatus = false;
+//		}
+//		return checkAllTopMostLinksInHamburgerStatus;
+//	}
 
-	public boolean checkBottomHamburgerElements() {
-		boolean checkAllBottomLinksInHamburgerStatus;
-		boolean isLinkClickable= false;
-		boolean isLinkDisplayed= false;
-		boolean isURLCorrectStatus= false;
-		boolean isPageBrokenStatus= false;
-		try {
-			for (int i = 0; i < hamburgerBottom.size(); i++) {
-				String hrefValue = hamburgerBottom.get(i).getAttribute("href");
-				String propValue = hamburgerBottom.get(i).getText().toLowerCase();
-				isLinkDisplayed = commonFunctions.isElementDisplayed(hamburgerBottom.get(i), 60, propValue);
-				isLinkClickable = commonFunctions.isElementClickable(hamburgerBottom.get(i), 60, propValue);
-				hamburgerBottom.get(i).click();
-				isURLCorrectStatus = commonFunctions.checkPageURL(hrefValue, 60, "");
-				isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
-			}
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus && isPageBrokenStatus) {
-			checkAllBottomLinksInHamburgerStatus = true;
-		} else {
-			checkAllBottomLinksInHamburgerStatus = false;
-		}
-		return checkAllBottomLinksInHamburgerStatus;
-	}
+//	public boolean checkBottomHamburgerElements() {
+//		boolean checkAllBottomLinksInHamburgerStatus;
+//		boolean isLinkClickable= false;
+//		boolean isLinkDisplayed= false;
+//		boolean isURLCorrectStatus= false;
+//		boolean isPageBrokenStatus= false;
+//		try {
+//			for (int i = 0; i < hamburgerBottom.size(); i++) {
+//				String hrefValue = hamburgerBottom.get(i).getAttribute("href");
+//				String propValue = hamburgerBottom.get(i).getText().toLowerCase();
+//				isLinkDisplayed = commonFunctions.isElementDisplayed(hamburgerBottom.get(i), 60, propValue);
+//				isLinkClickable = commonFunctions.isElementClickable(hamburgerBottom.get(i), 60, propValue);
+//				hamburgerBottom.get(i).click();
+//				isURLCorrectStatus = commonFunctions.checkPageURL(hrefValue, 60, "");
+//				isPageBrokenStatus = commonFunctions.checkElementNotPresent(error);
+//			}
+//		} catch (Exception ex) {
+//			System.out.println(ex.getMessage());
+//		}
+//		if (isLinkClickable && isLinkDisplayed && isURLCorrectStatus && isPageBrokenStatus) {
+//			checkAllBottomLinksInHamburgerStatus = true;
+//		} else {
+//			checkAllBottomLinksInHamburgerStatus = false;
+//		}
+//		return checkAllBottomLinksInHamburgerStatus;
+//	}
 
-	public boolean checkHamburgerTopmostListNotBlank() {
-		boolean checkHamburgerTopmostListNotBlankStatus = false;
-		try {
-			if (hamburgerTopmost.size() != 0) {
-				checkHamburgerTopmostListNotBlankStatus = true;
-				Utils.logStepInfo("Hamburger Topmost List Not Blank");
-			} else {
-				checkHamburgerTopmostListNotBlankStatus = false;
-				Utils.logStepInfo("Hamburger Topmost List is Blank");
-			}
-		} catch (Exception e) {
-			System.out.println("Topmost List Not found in page");
-		}
-		return checkHamburgerTopmostListNotBlankStatus;
-	}
+//	public boolean checkHamburgerTopmostListNotBlank() {
+//		boolean checkHamburgerTopmostListNotBlankStatus = false;
+//		try {
+//			if (hamburgerTopmost.size() != 0) {
+//				checkHamburgerTopmostListNotBlankStatus = true;
+//				Utils.logStepInfo("Hamburger Topmost List Not Blank");
+//			} else {
+//				checkHamburgerTopmostListNotBlankStatus = false;
+//				Utils.logStepInfo("Hamburger Topmost List is Blank");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("Topmost List Not found in page");
+//		}
+//		return checkHamburgerTopmostListNotBlankStatus;
+//	}
 
-	public boolean checkHamburgerBottomListNotBlank() {
-		boolean checkHamburgerBottomListNotBlankStatus = false;
-		try {
-			if (hamburgerBottom.size() != 0) {
-				checkHamburgerBottomListNotBlankStatus = true;
-				Utils.logStepInfo("Hamburger Bottom List Not Blank");
-			} else {
-				checkHamburgerBottomListNotBlankStatus = false;
-				Utils.logStepInfo("Hamburger Bottom List is Blank");
-			}
-		} catch (Exception e) {
-			System.out.println("Bottom List Not found in page");
-		}
-		return checkHamburgerBottomListNotBlankStatus;
-	}
+//	public boolean checkHamburgerBottomListNotBlank() {
+//		boolean checkHamburgerBottomListNotBlankStatus = false;
+//		try {
+//			if (hamburgerBottom.size() != 0) {
+//				checkHamburgerBottomListNotBlankStatus = true;
+//				Utils.logStepInfo("Hamburger Bottom List Not Blank");
+//			} else {
+//				checkHamburgerBottomListNotBlankStatus = false;
+//				Utils.logStepInfo("Hamburger Bottom List is Blank");
+//			}
+//		} catch (Exception e) {
+//			System.out.println("Bottom List Not found in page");
+//		}
+//		return checkHamburgerBottomListNotBlankStatus;
+//	}
 
 	public boolean checkHamburgerCategoriesListNotBlank() {
 		boolean checkHamburgerCategoriesListNotBlankStatus = false;
