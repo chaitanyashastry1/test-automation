@@ -27,7 +27,7 @@ public abstract class CommonHomePage {
     }
 
     public abstract String getSmartCastTitle(String expectedTitle);
-    public abstract boolean clickSmartCastLogo();
+    public abstract boolean checkSmartCastLogo();
     public abstract boolean checkHamburger();
 
 

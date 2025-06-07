@@ -4,8 +4,6 @@ import com.utils.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 
-import java.io.InputStream;
-import java.util.Properties;
 import java.util.Set;
 
 public abstract class TestBase {

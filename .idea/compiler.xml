@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="TestAutomation" />
+        <module name="HtTestAutomation" />
         <module name="test-automation" />
         <module name="spreadsheet-Integration" />
-        <module name="TestAutomation" />
       </profile>
     </annotationProcessing>
   </component>
